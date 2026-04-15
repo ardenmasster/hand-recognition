@@ -18,7 +18,7 @@ TARGET_FPS = 60  # Higher FPS for smoother cursor updates
 FRAME_TIME = 1 / TARGET_FPS
 
 # Initialize video capture and hand tracking
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 mpHands = mp.solutions.hands
 hands = mpHands.Hands(max_num_hands=1, min_detection_confidence=0.7, min_tracking_confidence=0.7)
 mpDraw = mp.solutions.drawing_utils

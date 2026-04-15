@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hand Recognition Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <main class="layout">
+    <section class="panel panel-video">
+      <div class="panel-header">
+        <h1>Hand Recognition Studio</h1>
+        <span id="liveDot" class="live-dot">LIVE</span>
+      </div>
+      <div class="video-shell">
+        <img id="videoFeed" src="/video_feed" alt="Live camera feed">
+      </div>
+      <div class="stats-row">
+        <article class="stat-card">
+          <p class="label">Current Gesture</p>
+          <p id="gestureText" class="value">Starting...</p>
+        </article>
+        <article class="stat-card">
+          <p class="label">Average FPS</p>
+          <p id="fpsText" class="value">0.0</p>
+        </article>
+        <article class="stat-card">
+          <p class="label">Detection Rate</p>
+          <p id="detectionText" class="value">0%</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel panel-controls">
+      <div class="panel-header">
+        <h2>Stability Controls</h2>
+        <button id="resetBtn" class="ghost-btn">Reset Analytics</button>
+      </div>
+
+      <div class="control-group">
+        <label for="detection">Detection Confidence <span id="detectionValue">0.70</span></label>
+        <input id="detection" type="range" min="0.30" max="0.95" step="0.01" value="0.70">
+      </div>
+
+      <div class="control-group">
+        <label for="tracking">Tracking Confidence <span id="trackingValue">0.70</span></label>
+        <input id="tracking" type="range" min="0.30" max="0.95" step="0.01" value="0.70">
+      </div>
+
+      <div class="control-group">
+        <label for="hold">Gesture Hold Frames <span id="holdValue">4</span></label>
+        <input id="hold" type="range" min="2" max="12" step="1" value="4">
+      </div>
+
+      <div class="control-group">
+        <label for="cooldown">Action Cooldown (ms) <span id="cooldownValue">450</span></label>
+        <input id="cooldown" type="range" min="100" max="2000" step="50" value="450">
+      </div>
+
+      <div class="control-group">
+        <label for="alpha">Smoothing Alpha <span id="alphaValue">0.18</span></label>
+        <input id="alpha" type="range" min="0.05" max="0.80" step="0.01" value="0.18">
+      </div>
+
+      <div class="sub-panel">
+        <h3>Recent Events</h3>
+        <ul id="eventsList" class="events-list"></ul>
+      </div>
+
+      <div class="sub-panel">
+        <h3>Gesture Counts</h3>
+        <div id="counts" class="counts"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
